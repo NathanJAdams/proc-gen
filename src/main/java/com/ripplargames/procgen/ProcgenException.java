@@ -1,6 +1,6 @@
 package com.ripplargames.procgen;
 
-public class ProcgenException extends Exception {
+public class ProcgenException extends RuntimeException {
     public ProcgenException() {
     }
 
