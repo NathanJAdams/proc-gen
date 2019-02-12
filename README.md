@@ -3,26 +3,28 @@
 ### Usage
 Create data classes to represent your objects, these only require the type and names, eg.
 
-<code>
-public class Animal {<br>
-&nbsp;private final String name;<br>
-&nbsp;private final Head head;<br>
-&nbsp;private final List&lt;Limb&gt; limbs;<br>
-}
-</code>
+    public class Animal {
+        private final AnimalType type;
+        private final String name;
+        private final Head head;
+        private final List<Limb> limbs;
+    }
 
-Now add annotations to each field from the [procgen/annotations](src/main/java/com/ripplargames/procgen/annotations) package, eg.
+Now add annotations to fields from the [procgen/annotations](src/main/java/com/ripplargames/procgen/annotations) package, eg.
 
-<code>
-public class Animal {<br>
-&nbsp;@Choice(choiceProvider = AnimalNames.class)<br>
-&nbsp;private final String name;<br><br>
-&nbsp;private final Head head;<br><br>
-&nbsp;@Collection(min = 2, max = 4, collectionClass = ArrayList.class, elementType = Limb.class)<br>
-&nbsp;private final List&lt;Limb&gt; limbs;<br>
-}
-</code>
+    public class Animal {
+        private final AnimalType type;
+        @Choice(choiceProvider = AnimalNames.class)
+        private final String name;
+        private final Head head;
+        @Collection(min = 2, max = 4, collectionClass = ArrayList.class, elementType = Limb.class)
+        private final List<Limb> limbs;
+    }
 
 
-To generate a procedural object, create a Context object and invoke the generate(Class type) function.
-This will return a new procedurally generated instance.
+Not all fields will need annotating, eg. Enums and your own class references don't necessarily require annotating. In the example above, if <code>AnimalType</code> is an Enum, a random one will be chosen from <code>AnimalType.values()</code>.<br>
+To generate a procedural object, create a Context object and invoke the <code>T generate(Class<T> type)</code> method.
+This will create and return a new procedurally generated instance.
+
+### TODO
+There is currently poor support for recursion or cyclic dependencies but this is on the TODO list. Until then, use the @Optional annotation, bearing in mind this may still cause a StackOverflow.
