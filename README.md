@@ -1,7 +1,7 @@
 ## A library for procedurally generating Java objects.
 
 ### Usage
-Create data classes to represent your objects, these only require the type and names, eg.
+Create data classes to represent your objects, eg.
 
     public class Animal {
         private final AnimalType type;
