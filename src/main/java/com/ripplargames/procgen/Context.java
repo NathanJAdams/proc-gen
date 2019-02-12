@@ -78,9 +78,7 @@ public class Context {
         if (optional == null) {
             return false;
         }
-        boolean vetoed = (random.nextDouble(0, 1) > optional.generatedChance());
-        System.out.println("checking optional vetoed: " + vetoed);
-        return vetoed;
+        return (random.nextDouble(0, 1) > optional.generatedChance());
     }
 
     @SuppressWarnings("unchecked")
