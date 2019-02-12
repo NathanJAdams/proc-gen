@@ -23,7 +23,7 @@ Now add annotations to fields from the [procgen/annotations](src/main/java/com/r
 
 
 Not all fields will need annotating, eg. Enums and your own class references don't necessarily require annotating. In the example above, if <code>AnimalType</code> is an Enum, a random one will be chosen from <code>AnimalType.values()</code>. Likewise, a procedurally generated <code>Head</code> object will be created automatically.<br>
-To generate a procedural object, create a Context object and invoke the <code>T generate(Class<T> type)</code> method.
+To generate a procedural object, create a <code>Context</code> object and invoke the <code>T generate(Class<T> type)</code> method.
 This will create and return a new procedurally generated instance.
 
 ### TODO
